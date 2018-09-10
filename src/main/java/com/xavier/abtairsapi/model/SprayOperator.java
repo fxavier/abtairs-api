@@ -10,10 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "spray_operator")
@@ -81,11 +78,6 @@ public class SprayOperator implements Serializable{
 		this.active = active;
 	}
 	
-	@Transient
-	@JsonIgnore
-	public Boolean isActive() {
-		return active == true;
-	}
 
 	@Override
 	public int hashCode() {

@@ -33,9 +33,14 @@ public class TeamLeaderResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
-	@GetMapping
+	@GetMapping(params = "all")
 	public List<TeamLeader> findAll() {
 		return teamLeaderRepository.findAll();
+	}
+	
+	@GetMapping
+	public List<TeamLeader> findByDistrict(Long district) {
+		return teamLeaderRepository.findByDistrictId(district);
 	}
 	
 	@GetMapping("/{id}")

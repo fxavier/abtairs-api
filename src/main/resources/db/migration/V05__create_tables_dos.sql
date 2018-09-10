@@ -23,20 +23,11 @@
     existeSubreposicao5cmNao BIGINT NOT NULL,
     tl_id BIGINT NOT NULL,
     village_id BIGINT NOT NULL,
-    district_id BIGINT NOT NULL,
-    operational_site_id BIGINT NOT NULL,
-    locality_id BIGINT NOT NULL,
     PRIMARY KEY(id),
     CONSTRAINT fk_dos_totals_tl
        FOREIGN KEY(tl_id) REFERENCES team_leader(id),
     CONSTRAINT fk_dos_totals_village
-       FOREIGN KEY(village_id) REFERENCES village(id),
-    CONSTRAINT fk_total_dos_district
-     FOREIGN KEY(district_id) REFERENCES district(id),
-    CONSTRAINT fk_total_dos_opsite
-     FOREIGN KEY(operational_site_id) REFERENCES operational_site(id),
-    CONSTRAINT fk_total_dos_locality
-     FOREIGN KEY(locality_id) REFERENCES locality(id)     
+       FOREIGN KEY(village_id) REFERENCES village(id)
    );
    
    CREATE TABLE dos_details (
@@ -53,7 +44,10 @@
     SOPMantemVelocCorrecta VARCHAR(20) NOT NULL,
     existeSubreposicao5cm VARCHAR(20),
     dos_totals_id BIGINT NOT NULL,
+    sop_id BIGINT NOT NULL,
     PRIMARY KEY(id),    
     CONSTRAINT fk_dos_details_totals
-       FOREIGN KEY(dos_totals_id) REFERENCES dos_totals(id) 
+       FOREIGN KEY(dos_totals_id) REFERENCES dos_totals(id),
+    CONSTRAINT fk_sop_dos_details
+       FOREIGN KEY(sop_id) REFERENCES spray_operator(id)
 );
